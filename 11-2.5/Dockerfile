@@ -10,6 +10,9 @@ RUN apt-get update \
            postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR=$POSTGIS_VERSION \
            postgresql-$PG_MAJOR-postgis-$POSTGIS_MAJOR-scripts=$POSTGIS_VERSION \
            postgis=$POSTGIS_VERSION \
+      && apt-get install -y --no-install-recommends python-happybase \
+      && apt-get install -y --no-install-recommends postgresql-plpython-10 \
+      && apt-get install -y --no-install-recommends postgresql-plpython-11 \
       && rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /docker-entrypoint-initdb.d
